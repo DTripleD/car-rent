@@ -19,28 +19,30 @@ import {
   SecondaryInfo,
   SecondaryCarText,
   LearnMoreBtn,
-  //   HeartIcon,
-  //   IconBtn,
-  //   HeartIconBlue,
-} from "./Cart.styled";
+  HeartIcon,
+  IconBtn,
+  HeartIconBlue,
+} from "./CarItem.styled";
 
-const Cart = ({
-  model,
-  make,
-  id,
-  img,
-  year,
-  address,
-  rentalPrice,
-  rentalCompany,
-  type,
-  functionalities,
-  fuelConsumption,
-  engineSize,
-  description,
-  accessories,
-  rentalConditions,
-  mileage,
+const CarItem = ({
+  car: {
+    model,
+    make,
+    id,
+    img,
+    year,
+    address,
+    rentalPrice,
+    rentalCompany,
+    type,
+    functionalities,
+    fuelConsumption,
+    engineSize,
+    description,
+    accessories,
+    rentalConditions,
+    mileage,
+  },
 }) => {
   //   const dispatch = useDispatch();
   //   const favorite = useSelector((state) => state.favorite);
@@ -66,18 +68,31 @@ const Cart = ({
   const city = addressParts[1];
   const country = addressParts[2];
 
-  const firstFunctionality = functionalities[0];
+  function findMaxString(array) {
+    let minString = array[0];
+    for (let i = 0; i < functionalities.length; i++) {
+      if (array[i].length < minString.length) {
+        minString = array[i];
+      }
+    }
+    return minString;
+  }
+
+  console.log(functionalities);
+
+  const firstFunctionality = findMaxString(functionalities);
 
   return (
     <Item>
       <CarImgWrap>
         <CarImg src={img} alt={make} />
-        {/* <IconBtn
-          onClick={!followStatus ? incrementFavorite : decrementFavorite}
+        <IconBtn
+          // onClick={!followStatus ? incrementFavorite : decrementFavorite}
           type="button"
-        > */}
-        {/* {!followStatus ? <HeartIcon /> : <HeartIconBlue />}
-        </IconBtn> */}
+        >
+          {/* {/* {!followStatus ? <HeartIcon /> : <HeartIconBlue />} */}
+          <HeartIcon />
+        </IconBtn>
       </CarImgWrap>
       <InfoWrapper>
         <MainInfo>
@@ -128,4 +143,4 @@ const Cart = ({
   );
 };
 
-export default Cart;
+export default CarItem;

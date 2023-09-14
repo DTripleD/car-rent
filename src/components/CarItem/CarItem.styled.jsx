@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
-// import { HiOutlineHeart } from "react-icons/hi";
-// import { HiHeart } from "react-icons/hi";
+import { HiOutlineHeart } from "react-icons/hi";
+import { HiHeart } from "react-icons/hi";
 
-export const Item = styled.div`
+export const Item = styled.li`
   width: 274px;
+  flex-basis: calc((100% - 87px) / 4);
   height: 426px;
   display: flex;
   flex-direction: column;
@@ -54,7 +55,7 @@ export const CarText = styled.div`
 `;
 
 export const ModelBlue = styled.div`
-  color: #872142;
+  color: rgba(52, 112, 255, 1);
   font-size: 16px;
 `;
 
@@ -84,6 +85,8 @@ export const SecondaryInfo = styled.div`
   font-weight: 400;
   line-height: 18px;
   gap: 4px;
+  max-height: 40px;
+  overflow: hidden;
 `;
 
 export const SecondaryCarText = styled.div`
@@ -105,7 +108,7 @@ export const LearnMoreBtn = styled.button`
   font-weight: 600;
   line-height: 20px;
   border-radius: 12px;
-  background: #5a7aaf;
+  background-color: rgba(52, 112, 255, 1);
   border: none;
   cursor: pointer;
   outline: none;
@@ -114,7 +117,7 @@ export const LearnMoreBtn = styled.button`
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    background: #445c84;
+    background: #1946af;
   }
 
   @media (min-width: 768px) {
@@ -135,16 +138,16 @@ export const IconBtn = styled.button`
   background-color: transparent;
 `;
 
-// export const HeartIcon = styled(HiOutlineHeart)`
-//   display: block;
-//   color: rgb(255 255 255 / 80%);
-//   width: 18px;
-//   height: 18px;
-// `;
+export const HeartIcon = styled(HiOutlineHeart)`
+  display: block;
+  color: rgb(255 255 255 / 80%);
+  width: 18px;
+  height: 18px;
+`;
 
-// export const HeartIconBlue = styled(HiHeart)`
-//   display: block;
-//   color: #3470ff;
-//   width: 18px;
-//   height: 18px;
-// `;
+export const HeartIconBlue = styled(HiHeart)`
+  display: block;
+  color: #3470ff;
+  width: 18px;
+  height: 18px;
+`;

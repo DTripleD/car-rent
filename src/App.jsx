@@ -1,9 +1,9 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { SharedLayout } from "./components/SharedLayout";
-import Home from "./pages/home";
-import Catalog from "./pages/catalog";
-import Favorite from "./pages/favorite";
+import SharedLayout from "./components/SharedLayout/SharedLayout";
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import Favorite from "./pages/Favorite";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="catalog" element={<Catalog />} />
-          <Route path="favorite" element={<Favorite />} />
+          <Route path="favorites" element={<Favorite />} />
         </Route>
       </Routes>
     </>
