@@ -1,10 +1,6 @@
 /* eslint-disable react/prop-types */
-// import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-// import {
-//   minusToFavoriteList,
-//   plusToFavoriteList,
-// } from "redux/favoriteSlice/slice";
+import { useEffect, useState } from "react";
+
 import Modal from "components/Modal/Modal";
 
 import {
@@ -24,30 +20,7 @@ import {
   HeartIconBlue,
 } from "./CarItem.styled";
 
-const CarItem = ({
-  car: {
-    model,
-    make,
-    id,
-    img,
-    year,
-    address,
-    rentalPrice,
-    rentalCompany,
-    type,
-    functionalities,
-    fuelConsumption,
-    engineSize,
-    description,
-    accessories,
-    rentalConditions,
-    mileage,
-  },
-}) => {
-  //   const dispatch = useDispatch();
-  //   const favorite = useSelector((state) => state.favorite);
-  //   const followStatus = favorite.includes(id);
-
+const CarItem = ({ car, fav, change }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -57,20 +30,44 @@ const CarItem = ({
     setIsModalOpen(false);
   };
 
-  //   const incrementFavorite = () => {
-  //     dispatch(plusToFavoriteList(id));
-  //   };
-  //   const decrementFavorite = () => {
-  //     dispatch(minusToFavoriteList(id));
-  //   };
+  const [favorite, setFavorite] = useState(false);
 
-  const addressParts = address.split(", ");
+  useEffect(() => {
+    const local = JSON.parse(localStorage.getItem("fav"));
+    if (local) {
+      local.map((item) => {
+        if (item.id === car.id) setFavorite(true);
+      });
+    }
+  }, [car.id]);
+
+  const handleHeartClick = () => {
+    setFavorite(!favorite);
+    if (!favorite) {
+      const local = JSON.parse(localStorage.getItem("fav"));
+      if (local) {
+        local.push(car);
+        localStorage.setItem("fav", JSON.stringify(local));
+        return;
+      }
+      localStorage.setItem("fav", JSON.stringify([car]));
+    } else {
+      const local = JSON.parse(localStorage.getItem("fav"));
+      const remove = local.filter((item) => item.id !== car.id);
+      if (fav !== undefined) {
+        change();
+      }
+      localStorage.setItem("fav", JSON.stringify(remove));
+    }
+  };
+
+  const addressParts = car.address.split(", ");
   const city = addressParts[1];
   const country = addressParts[2];
 
   function findMaxString(array) {
     let minString = array[0];
-    for (let i = 0; i < functionalities.length; i++) {
+    for (let i = 0; i < car.functionalities.length; i++) {
       if (array[i].length < minString.length) {
         minString = array[i];
       }
@@ -78,64 +75,58 @@ const CarItem = ({
     return minString;
   }
 
-  console.log(functionalities);
-
-  const firstFunctionality = findMaxString(functionalities);
+  const firstFunctionality = findMaxString(car.functionalities);
 
   return (
     <Item>
       <CarImgWrap>
-        <CarImg src={img} alt={make} />
-        <IconBtn
-          // onClick={!followStatus ? incrementFavorite : decrementFavorite}
-          type="button"
-        >
-          {/* {/* {!followStatus ? <HeartIcon /> : <HeartIconBlue />} */}
-          <HeartIcon />
+        <CarImg src={car.img} alt={car.make} />
+        <IconBtn onClick={handleHeartClick} type="button">
+          {!favorite ? <HeartIcon /> : <HeartIconBlue />}
         </IconBtn>
       </CarImgWrap>
       <InfoWrapper>
         <MainInfo>
           <CarInfo>
-            <CarText>{make}</CarText>
+            <CarText>{car.make}</CarText>
             <ModelBlue>
-              {model}
+              {car.model}
               <span style={{ color: "black" }}>,</span>
             </ModelBlue>
-            <CarText>{year}</CarText>
+            <CarText>{car.year}</CarText>
           </CarInfo>
-          <CarText>{rentalPrice}</CarText>
+          <CarText>{car.rentalPrice}</CarText>
         </MainInfo>
         <SecondaryInfo>
           <SecondaryCarText>{city}</SecondaryCarText>
           <SecondaryCarText>{country}</SecondaryCarText>
-          <SecondaryCarText>{rentalCompany}</SecondaryCarText>
-          <SecondaryCarText>{type}</SecondaryCarText>
-          <SecondaryCarText>{make}</SecondaryCarText>
-          <SecondaryCarText>{id}</SecondaryCarText>
+          <SecondaryCarText>{car.rentalCompany}</SecondaryCarText>
+          <SecondaryCarText>{car.type}</SecondaryCarText>
+          <SecondaryCarText>{car.make}</SecondaryCarText>
+          <SecondaryCarText>{car.id}</SecondaryCarText>
           <SecondaryCarText>{firstFunctionality}</SecondaryCarText>
         </SecondaryInfo>
         <LearnMoreBtn onClick={openModal}>Learn more</LearnMoreBtn>
         {isModalOpen && (
           <Modal
             onClose={closeModal}
-            key={id}
-            model={model}
-            make={make}
-            year={year}
-            rentalPrice={rentalPrice}
-            address={address}
-            rentalCompany={rentalCompany}
-            functionalities={functionalities}
-            id={id}
-            type={type}
-            img={img}
-            fuelConsumption={fuelConsumption}
-            engineSize={engineSize}
-            description={description}
-            accessories={accessories}
-            rentalConditions={rentalConditions}
-            mileage={mileage}
+            key={car.id}
+            model={car.model}
+            make={car.make}
+            year={car.year}
+            rentalPrice={car.rentalPrice}
+            address={car.address}
+            rentalCompany={car.rentalCompany}
+            functionalities={car.functionalities}
+            id={car.id}
+            type={car.type}
+            img={car.img}
+            fuelConsumption={car.fuelConsumption}
+            engineSize={car.engineSize}
+            description={car.description}
+            accessories={car.accessories}
+            rentalConditions={car.rentalConditions}
+            mileage={car.mileage}
           />
         )}
       </InfoWrapper>

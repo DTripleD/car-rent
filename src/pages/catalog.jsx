@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-import CarsList from "../components/CarsList/CarsList";
-import { getAllCars } from "../shared/api";
+import { CarCatalog } from "../components/CarCatalog/CarCatalog";
 import { Section } from "./Catalog.styled";
 
 const Catalog = () => {
-  const [cars, setCars] = useState([]);
-  useEffect(() => {
-    getAllCars().then((data) => setCars(data));
-  }, []);
+  console.log("rerender");
   return (
     <>
       <Section>
-        <CarsList data={cars} />
+        <CarCatalog />
       </Section>
     </>
   );

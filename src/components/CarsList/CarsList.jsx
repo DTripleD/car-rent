@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import CarItem from "../CarItem/CarItem";
 import {
@@ -14,11 +15,11 @@ import {
 } from "./CarsList.styled";
 
 import { optionCategories } from "../../shared/data";
+import { createArrayWithStep } from "../../shared/createArrayWithStep";
 
 const cardsPerPage = 8;
 
-// eslint-disable-next-line react/prop-types
-const CarsList = ({ data }) => {
+const CarsList = ({ cars, changeFav, fav }) => {
   const [model, setModel] = useState("");
   const [price, setPrice] = useState("");
   const [startMiles, setStartMiles] = useState("");
@@ -26,40 +27,10 @@ const CarsList = ({ data }) => {
 
   const [page, setPage] = useState(1);
   const [filteredCars, setFilteredCars] = useState([]);
-  const uniqueMakes = new Set();
-
-  const handleChangeModel = (event) => {
-    console.log(event.value);
-    setModel(event.value);
-    // setIsDropdownOpen(false);
-    setPage(1);
-  };
-
-  const handleChangeStartMiles = (event) => {
-    setStartMiles(event.target.value);
-    setPage(1);
-  };
-  const handleChangeEndMiles = (event) => {
-    setEndMiles(event.target.value);
-    setPage(1);
-  };
-
-  const handleChangePrice = (event) => {
-    setPrice(event.value);
-    setPage(1);
-  };
 
   useEffect(() => {
-    setFilteredCars(data);
-  }, [data]);
-
-  function createArrayWithStep(number, step) {
-    const resultArray = [];
-    for (let i = step; i <= number; i += step) {
-      resultArray.push(i.toString());
-    }
-    return resultArray;
-  }
+    setFilteredCars(cars);
+  }, [cars]);
 
   const minPrice = 30;
   const maxPrice = 500;
@@ -69,44 +40,22 @@ const CarsList = ({ data }) => {
     .filter((item) => item >= minPrice)
     .map((item) => ({ label: item, value: item }));
 
-  const modelOptions = data
-    // eslint-disable-next-line react/prop-types
-    .filter((item) => {
-      const make = item.make;
-      if (!uniqueMakes.has(make)) {
-        uniqueMakes.add(make);
-        return true;
-      }
-      return false;
-    })
-    .map((item) => ({ label: item.make, value: item.make }));
-
   const clear = () => {
     setModel("");
     setPrice("");
     setStartMiles("");
     setEndMiles("");
-    setFilteredCars(data);
-    // setShowNoCarsMessage(false);
+    setFilteredCars(cars);
   };
 
   const search = () => {
-    console.log("start");
-    // setShowNoCarsMessage(false);
+    setPage(1);
     const isBrandValid = (model) => /^[a-zA-Z\s]+$/i.test(model);
-    let arr = data;
+    let arr = cars;
 
     if (model !== "") {
       if (!isBrandValid(model)) {
         alert("Car brand should contain only EN letters !");
-        return;
-      }
-      if (
-        !modelOptions.find(
-          (option) => option.label.toLowerCase() === model.toLowerCase()
-        )
-      ) {
-        alert(`There is no car brand "${model}" in the list with this params!`);
         return;
       }
 
@@ -176,12 +125,13 @@ const CarsList = ({ data }) => {
         alert("No cars matching your criteria found.");
       }
     }
+
     return arr;
   };
 
   const paginatedCars = filteredCars.slice(0, page * cardsPerPage);
   const getPage = () => setPage(page + 1);
-  const totalPages = Math.ceil(filteredCars.length / cardsPerPage);
+  const totalPages = Math.ceil(cars.length / cardsPerPage);
 
   return (
     <div>
@@ -191,7 +141,7 @@ const CarsList = ({ data }) => {
           <StyledSelectBrand
             placeholder="Enter the text"
             options={optionCategories}
-            onChange={handleChangeModel}
+            onChange={(event) => setModel(event.value)}
             classNamePrefix={"select"}
           />
         </Label>
@@ -200,7 +150,7 @@ const CarsList = ({ data }) => {
           <StyledSelectPrice
             placeholder="To $"
             options={priceOptions}
-            onChange={handleChangePrice}
+            onChange={(event) => setPrice(event.value)}
             classNamePrefix={"select"}
           />
         </Label>
@@ -210,12 +160,12 @@ const CarsList = ({ data }) => {
             <MileageInputLeft
               type="text"
               placeholder="From"
-              onChange={handleChangeStartMiles}
+              onChange={(event) => setStartMiles(event.target.value)}
             />
             <MileageInputRight
               type="text"
               placeholder="To"
-              onChange={handleChangeEndMiles}
+              onChange={(event) => setEndMiles(event.target.value)}
             />
           </MileageInputsWraper>
         </Label>
@@ -228,11 +178,11 @@ const CarsList = ({ data }) => {
       </FormWraper>
       <List>
         {paginatedCars.map((car) => (
-          <CarItem key={car.id} car={car} />
+          <CarItem key={car.id} fav={fav} change={changeFav} car={car} />
         ))}
       </List>
 
-      {filteredCars.length > 0 ? (
+      {cars.length > 0 ? (
         totalPages !== page && (
           <button onClick={getPage} type="button">
             Load more
