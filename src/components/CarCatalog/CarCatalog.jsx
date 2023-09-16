@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-
 import CarsList from "../CarsList/CarsList";
-import { getCar } from "../../shared/api";
+import { useSelector } from "react-redux";
+import { getCars } from "../../redux/selectors";
 
 export const CarCatalog = () => {
-  const [cars, setCars] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const allCar = await getCar();
-      setCars(allCar);
-    })();
-  }, []);
+  const cars = useSelector(getCars);
 
   return (
     <div>

@@ -19,9 +19,16 @@ import {
   IconBtn,
   HeartIconBlue,
 } from "./CarItem.styled";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeFavorite,
+  setFavoritee,
+} from "../../redux/favorite/favoriteSlice";
+import { getFavorite } from "../../redux/selectors";
 
-const CarItem = ({ car, fav, change }) => {
+const CarItem = ({ car }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -32,32 +39,22 @@ const CarItem = ({ car, fav, change }) => {
 
   const [favorite, setFavorite] = useState(false);
 
+  const data = useSelector(getFavorite);
+
   useEffect(() => {
-    const local = JSON.parse(localStorage.getItem("fav"));
-    if (local) {
-      local.map((item) => {
+    if (data) {
+      data.map((item) => {
         if (item.id === car.id) setFavorite(true);
       });
     }
-  }, [car.id]);
+  }, [car.id, data]);
 
   const handleHeartClick = () => {
     setFavorite(!favorite);
     if (!favorite) {
-      const local = JSON.parse(localStorage.getItem("fav"));
-      if (local) {
-        local.push(car);
-        localStorage.setItem("fav", JSON.stringify(local));
-        return;
-      }
-      localStorage.setItem("fav", JSON.stringify([car]));
+      dispatch(setFavoritee(car));
     } else {
-      const local = JSON.parse(localStorage.getItem("fav"));
-      const remove = local.filter((item) => item.id !== car.id);
-      if (fav !== undefined) {
-        change();
-      }
-      localStorage.setItem("fav", JSON.stringify(remove));
+      dispatch(removeFavorite(car));
     }
   };
 

@@ -19,7 +19,7 @@ import { createArrayWithStep } from "../../shared/createArrayWithStep";
 
 const cardsPerPage = 8;
 
-const CarsList = ({ cars, changeFav, fav }) => {
+const CarsList = ({ cars, fav }) => {
   const [model, setModel] = useState("");
   const [price, setPrice] = useState("");
   const [startMiles, setStartMiles] = useState("");
@@ -178,7 +178,7 @@ const CarsList = ({ cars, changeFav, fav }) => {
       </FormWraper>
       <List>
         {paginatedCars.map((car) => (
-          <CarItem key={car.id} fav={fav} change={changeFav} car={car} />
+          <CarItem key={car.id} fav={fav} car={car} />
         ))}
       </List>
 

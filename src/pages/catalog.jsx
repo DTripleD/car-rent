@@ -3,7 +3,6 @@ import { MainContainer } from "../components/MainContainer/MainContainer";
 import { Section } from "./Catalog.styled";
 
 const Catalog = () => {
-  console.log("rerender");
   return (
     <>
       <MainContainer>
