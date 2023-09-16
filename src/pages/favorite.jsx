@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CarsList from "../components/CarsList/CarsList";
+import { MainContainer } from "../components/MainContainer/MainContainer";
 
 const Favorite = () => {
   const [cars, setcars] = useState(false);
@@ -21,11 +22,13 @@ const Favorite = () => {
     setFavorite(true);
   };
   return (
-    <div>
-      {cars && (
-        <CarsList changeFav={handleChangeFavorite} fav={true} cars={cars} />
-      )}
-    </div>
+    <MainContainer>
+      <div>
+        {cars && (
+          <CarsList changeFav={handleChangeFavorite} fav={true} cars={cars} />
+        )}
+      </div>
+    </MainContainer>
   );
 };
 
