@@ -1,1 +1,0 @@
-import{u as t,j as s}from"./index-4bd9eb5f.js";import{a,C as e}from"./CarsList-5c074cea.js";import"./main-car-e21e7ec8.js";const n=()=>{const r=t(a);return s.jsx(s.Fragment,{children:s.jsx(e,{cars:r})})};export{n as default};
