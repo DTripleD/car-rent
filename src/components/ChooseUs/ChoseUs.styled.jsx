@@ -1,17 +1,13 @@
 import styled from "@emotion/styled";
 
-export const Section = styled.section`
-  background-color: ${(props) => props.theme.colors.white};
-  padding: 100px 30px;
-  background-position: -225px 255px;
-  background-size: cover;
-  background-repeat: no-repeat;
-`;
-
 export const ChooseContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 30px;
+  background-position: -225px 255px;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const StyledLink = styled.a`

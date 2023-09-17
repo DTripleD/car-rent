@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
-export const HeroSection = styled.section`
-  padding: 100px 30px;
-`;
-
 export const ButtonWraper = styled.div`
   display: flex;
   justify-content: center;
@@ -33,9 +29,9 @@ export const LearnMore = styled(Link)`
 `;
 
 export const HeroContent = styled.div`
+  padding: 0 30px;
   width: 100%;
-  margin-top: 100px;
-  margin-bottom: 100px;
+
   display: flex;
   align-items: center;
 `;

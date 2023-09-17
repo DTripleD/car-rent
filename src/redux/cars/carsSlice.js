@@ -14,12 +14,13 @@ const carsSlice = createSlice({
   name: "cars",
   initialState: {
     items: [],
-    isLoading: false,
+    isLoading: true,
     error: null,
   },
   extraReducers: {
     [fetchCars.pending]: handlePending,
     [fetchCars.fulfilled](state, action) {
+      console.log(state);
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;

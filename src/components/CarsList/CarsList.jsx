@@ -17,7 +17,11 @@ import {
 
 import { optionCategories } from "../../shared/data";
 import { createArrayWithStep } from "../../shared/createArrayWithStep";
-import NoCars from "../NoCars/NoCars";
+import ErrorPage from "../NoCars/ErrorPage";
+import { useSelector } from "react-redux";
+import { getLoading } from "../../redux/selectors";
+import Loader from "../Loader/Loader";
+import Section from "../Section/Section";
 
 const cardsPerPage = 8;
 
@@ -29,6 +33,10 @@ const CarsList = ({ cars, fav }) => {
 
   const [page, setPage] = useState(1);
   const [filteredCars, setFilteredCars] = useState([]);
+
+  const loading = useSelector(getLoading);
+
+  console.log(loading);
 
   useEffect(() => {
     setFilteredCars(cars);
@@ -135,70 +143,79 @@ const CarsList = ({ cars, fav }) => {
   const getPage = () => setPage(page + 1);
   const totalPages = Math.ceil(filteredCars.length / cardsPerPage);
 
-  console.log(paginatedCars);
-
   return (
-    <div>
-      <FormWraper>
-        <Label>
-          <FormName>Car brand</FormName>
-          <StyledSelectBrand
-            placeholder="Enter the text"
-            options={optionCategories}
-            onChange={(event) => setModel(event.value)}
-            classNamePrefix={"select"}
-            value={model === "" ? "" : { value: model, label: model }}
-          />
-        </Label>
-        <Label>
-          <FormName>Price/ 1 hour</FormName>
-          <StyledSelectPrice
-            placeholder="To $"
-            options={priceOptions}
-            onChange={(event) => setPrice(event.value)}
-            classNamePrefix={"select"}
-            value={price === "" ? "" : { value: price, label: `To ${price}$` }}
-            // formatOptionLabel={`To ${{ value: price, label: price }}`}
-          />
-        </Label>
-        <Label>
-          <FormName>Сar mileage / km</FormName>
-          <MileageInputsWraper>
-            <MileageInputLeft
-              type="text"
-              placeholder="From"
-              onChange={(event) => setStartMiles(event.target.value)}
-            />
-            <MileageInputRight
-              type="text"
-              placeholder="To"
-              onChange={(event) => setEndMiles(event.target.value)}
-            />
-          </MileageInputsWraper>
-        </Label>
-        <SearchBtn type="button" onClick={search}>
-          Search
-        </SearchBtn>
-        <SearchBtn type="button" onClick={clear}>
-          Clear
-        </SearchBtn>
-      </FormWraper>
-      <List>
-        {paginatedCars.map((car) => (
-          <CarItem key={car.id} fav={fav} car={car} />
-        ))}
-      </List>
-
-      {filteredCars.length > 0 ? (
-        totalPages !== page && (
-          <LoadMoreBtn onClick={getPage} type="button">
-            Load more
-          </LoadMoreBtn>
-        )
+    <>
+      {loading ? (
+        <Loader />
       ) : (
-        <NoCars />
+        <>
+          {filteredCars.length > 0 ? (
+            <Section>
+              <FormWraper>
+                <Label>
+                  <FormName>Car brand</FormName>
+                  <StyledSelectBrand
+                    placeholder="Enter the text"
+                    options={optionCategories}
+                    onChange={(event) => setModel(event.value)}
+                    classNamePrefix={"select"}
+                    value={model === "" ? "" : { value: model, label: model }}
+                  />
+                </Label>
+                <Label>
+                  <FormName>Price/ 1 hour</FormName>
+                  <StyledSelectPrice
+                    placeholder="To $"
+                    options={priceOptions}
+                    onChange={(event) => setPrice(event.value)}
+                    classNamePrefix={"select"}
+                    value={
+                      price === ""
+                        ? ""
+                        : { value: price, label: `To ${price}$` }
+                    }
+                    // formatOptionLabel={`To ${{ value: price, label: price }}`}
+                  />
+                </Label>
+                <Label>
+                  <FormName>Сar mileage / km</FormName>
+                  <MileageInputsWraper>
+                    <MileageInputLeft
+                      type="text"
+                      placeholder="From"
+                      onChange={(event) => setStartMiles(event.target.value)}
+                    />
+                    <MileageInputRight
+                      type="text"
+                      placeholder="To"
+                      onChange={(event) => setEndMiles(event.target.value)}
+                    />
+                  </MileageInputsWraper>
+                </Label>
+                <SearchBtn type="button" onClick={search}>
+                  Search
+                </SearchBtn>
+                <SearchBtn type="button" onClick={clear}>
+                  Clear
+                </SearchBtn>
+              </FormWraper>
+              <List>
+                {paginatedCars.map((car) => (
+                  <CarItem key={car.id} fav={fav} car={car} />
+                ))}
+              </List>
+              {totalPages !== page && (
+                <LoadMoreBtn onClick={getPage} type="button">
+                  Load more
+                </LoadMoreBtn>
+              )}{" "}
+            </Section>
+          ) : (
+            <ErrorPage errorMessage="No cars available" />
+          )}
+        </>
       )}
-    </div>
+    </>
   );
 };
 

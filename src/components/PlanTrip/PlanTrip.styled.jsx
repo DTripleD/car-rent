@@ -1,9 +1,5 @@
 import styled from "@emotion/styled";
 
-export const PlanSection = styled.section`
-  padding: 100px 30px;
-`;
-
 export const PlanContainerTitle = styled.div`
   margin: 0 auto;
   text-align: center;
@@ -12,6 +8,7 @@ export const PlanContainerTitle = styled.div`
 export const PlanContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 30px;
 `;
 
 export const PlanContainerBoxes = styled.div`

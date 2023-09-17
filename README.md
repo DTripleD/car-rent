@@ -1,8 +1,28 @@
-# React + Vite
+<h1 align="center">Drink Master</h1>
+<h2 align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="src/images/banner.jpg">
 
-Currently, two official plugins are available:
+## About this project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+CarRent is a site that offers:
+
+- searching cars by models, price or milage
+- adding cars to the list of favorites
+
+## Technologies and libraries used to create the project:
+
+- This project was created with the help of [Vite + React](https://github.com/vitejs/vite)
+- [React Redux](https://react-redux.js.org)
+- [Redux Toolkit](https://redux-toolkit.js.org)
+- [Redux Persist](https://github.com/rt2zz/redux-persist)
+- [React Router Dom](https://reactrouter.com/en/main)
+- [Emotion Styled](https://emotion.sh/docs/styled)
+- [Axios](https://axios-http.com/ru/docs/intro)
+- [React Select](https://react-select.com)
+- HTML
+- CSS
+
+## Live page
+
+Live page can be accessed via [https://github.com/DTripleD/car-rent/](https://github.com/DTripleD/car-rent/)

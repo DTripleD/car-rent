@@ -1,15 +1,15 @@
-import { CarCatalog } from "../components/CarCatalog/CarCatalog";
-import { MainContainer } from "../components/MainContainer/MainContainer";
-import { Section } from "./Catalog.styled";
+import { useSelector } from "react-redux";
+
+import CarsList from "../components/CarsList/CarsList";
+
+import { getCars } from "../redux/selectors";
 
 const Catalog = () => {
+  const cars = useSelector(getCars);
+
   return (
     <>
-      <MainContainer>
-        <Section>
-          <CarCatalog />
-        </Section>
-      </MainContainer>
+      <CarsList cars={cars} />
     </>
   );
 };

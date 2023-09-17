@@ -4,6 +4,7 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { useDispatch } from "react-redux";
 import { lazy, useEffect } from "react";
 import { fetchCars } from "./redux/operations";
+import ErrorPage from "./components/NoCars/ErrorPage";
 
 const Home = lazy(() => import("./pages/Home"));
 const Catalog = lazy(() => import("./pages/Catalog"));
@@ -23,6 +24,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path="catalog" element={<Catalog />} />
           <Route path="favorites" element={<Favorite />} />
+          <Route
+            path="*"
+            element={
+              <ErrorPage errorMessage="404 page. Please go to any other page from the suggested ones" />
+            }
+          />
         </Route>
       </Routes>
     </>

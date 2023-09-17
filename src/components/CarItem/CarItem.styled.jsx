@@ -4,7 +4,7 @@ import { HiHeart } from "react-icons/hi";
 
 export const Item = styled.li`
   width: 274px;
-  flex-basis: calc((100% - 87px) / 4);
+
   height: 426px;
   display: flex;
   flex-direction: column;
