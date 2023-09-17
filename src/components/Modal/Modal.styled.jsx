@@ -47,8 +47,8 @@ export const ModalContainer = styled.div`
 export const BtnClose = styled.button`
   position: absolute;
   color: ${(props) => props.theme.colors.black};
-  top: -30px;
-  right: -20px;
+  top: -24px;
+  right: -24px;
   background-color: transparent;
   width: 24px;
   height: 24px;
