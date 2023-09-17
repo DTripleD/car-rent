@@ -1,4 +1,4 @@
-import{n,j as e,S as a,L as l}from"./index-dd7729e4.js";import{H as d}from"./main-car-e21e7ec8.js";const h="/car-rent/assets/img4-1359af0b.png",x="/car-rent/assets/img5-9557c690.png",p="/car-rent/assets/img6-bb973a55.png",g=n.div`
+import{n,j as e,S as a,L as l}from"./index-ac2b654b.js";import{H as d}from"./main-car-e21e7ec8.js";const h="/car-rent/assets/img4-1359af0b.png",x="/car-rent/assets/img5-9557c690.png",p="/car-rent/assets/img6-bb973a55.png",g=n.div`
   display: flex;
   flex-direction: column;
   align-items: center;
