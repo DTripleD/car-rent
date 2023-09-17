@@ -13,8 +13,9 @@ const theme = {
     primary: "#3470FF",
     primariHover: "#0B44CD",
     white: "#FFFFFF",
-    black: "#000000",
+    black: "#121417",
     grey: "#1214177f",
+    lightGrey: " #1214170D",
   },
 };
 

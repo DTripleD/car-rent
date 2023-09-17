@@ -121,7 +121,7 @@ const StyledSelect = styled(Select)`
   }
 
   .select__placeholder {
-    color: ${(props) => props.theme.colors.grey};
+    color: ${(props) => props.theme.colors.black};
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
@@ -167,25 +167,17 @@ const StyledSelect = styled(Select)`
   }
 
   .select__single-value {
-    /* display: block;
-    position: absolute;
-    left: 24px;
-
-    padding: auto;
-    color: red;
-    font-size: 14px; */
-
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
-    color: ${(props) => props.theme.colors.grey};
+    color: ${(props) => props.theme.colors.black};
   }
 
   .select__menu-list::-webkit-scrollbar {
     width: 8px;
   }
   .select__menu-list::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.colors.grey};
+    background: ${(props) => props.theme.colors.lightGrey};
     border-radius: 14px;
   }
 `;
@@ -269,5 +261,3 @@ export const LoadMoreBtn = styled.button`
     text-decoration: underline;
   }
 `;
-
-

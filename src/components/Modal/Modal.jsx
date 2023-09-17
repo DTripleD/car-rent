@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import CarImage from "../../images/main-car.png";
 
 import {
   ModalContainer,
@@ -90,7 +91,7 @@ const Modal = ({
           <BtnClose type="button" aria-label="close button" onClick={onClose}>
             <CloseIcon />
           </BtnClose>
-          <CarImg src={img} alt={make} />
+          <CarImg src={img || CarImage} alt={make} />
           <InfoWrapper>
             <MainInfo>
               <CarInfo>

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+import CarImage from "../../images/main-car.png";
+
 import Modal from "components/Modal/Modal";
 
 import {
@@ -77,7 +79,7 @@ const CarItem = ({ car }) => {
   return (
     <Item>
       <CarImgWrap>
-        <CarImg src={car.img} alt={car.make} />
+        <CarImg src={car.img || CarImage} alt={car.make} />
         <IconBtn onClick={handleHeartClick} type="button">
           {!favorite ? <HeartIcon /> : <HeartIconBlue />}
         </IconBtn>
