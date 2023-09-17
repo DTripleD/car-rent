@@ -2,12 +2,12 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { fetchCars } from "./redux/operations";
-import HomePage from "./pages/HomePage";
 
-import FavoritePage from "./pages/FavoritePage";
-import CatalogPage from "./pages/CatalogPage";
+const HomePage = lazy(() => import("../src/pages/HomePage"));
+const FavoritePage = lazy(() => import("../src/pages/FavoritePage"));
+const CatalogPage = lazy(() => import("../src/pages/CatalogPage"));
 
 function App() {
   const dispatch = useDispatch();
