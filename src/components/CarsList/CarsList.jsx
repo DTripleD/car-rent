@@ -148,74 +148,74 @@ const CarsList = ({ cars, fav }) => {
         <Loader />
       ) : (
         <>
-          {filteredCars.length > 0 ? (
-            <Section>
-              <FormWraper>
-                <Label>
-                  <FormName>Car brand</FormName>
-                  <StyledSelectBrand
-                    placeholder="Enter the text"
-                    options={optionCategories}
-                    onChange={(event) => setModel(event.value)}
-                    classNamePrefix={"select"}
-                    value={model === "" ? "" : { value: model, label: model }}
-                  />
-                </Label>
-                <Label>
-                  <FormName>Price/ 1 hour</FormName>
-                  <StyledSelectPrice
-                    placeholder="To $"
-                    options={priceOptions}
-                    onChange={(event) => setPrice(event.value)}
-                    classNamePrefix={"select"}
-                    value={
-                      price === ""
-                        ? ""
-                        : { value: price, label: `To ${price}$` }
-                    }
-                    // formatOptionLabel={`To ${{ value: price, label: price }}`}
-                  />
-                </Label>
-                <Label>
-                  <FormName>Сar mileage / km</FormName>
-                  <MileageInputsWraper>
-                    <WrapperLeft>
-                      From
-                      <MileageInput
-                        type="text"
-                        onChange={(event) => setStartMiles(event.target.value)}
-                      />
-                    </WrapperLeft>
-                    <WrapperRight>
-                      To
-                      <MileageInput
-                        type="text"
-                        onChange={(event) => setEndMiles(event.target.value)}
-                      />
-                    </WrapperRight>
-                  </MileageInputsWraper>
-                </Label>
-                <SearchBtn type="button" onClick={search}>
-                  Search
-                </SearchBtn>
-                <SearchBtn type="button" onClick={clear}>
-                  Clear
-                </SearchBtn>
-              </FormWraper>
-              <List>
-                {paginatedCars.map((car) => (
-                  <CarItem key={car.id} fav={fav} car={car} />
-                ))}
-              </List>
-              {totalPages !== page && (
-                <LoadMoreBtn onClick={getPage} type="button">
-                  Load more
-                </LoadMoreBtn>
-              )}{" "}
-            </Section>
-          ) : (
-            <ErrorPage errorMessage="No cars available" />
-          )}
+          <Section>
+            <FormWraper>
+              <Label>
+                <FormName>Car brand</FormName>
+                <StyledSelectBrand
+                  placeholder="Enter the text"
+                  options={optionCategories}
+                  onChange={(event) => setModel(event.value)}
+                  classNamePrefix={"select"}
+                  value={model === "" ? "" : { value: model, label: model }}
+                />
+              </Label>
+              <Label>
+                <FormName>Price/ 1 hour</FormName>
+                <StyledSelectPrice
+                  placeholder="To $"
+                  options={priceOptions}
+                  onChange={(event) => setPrice(event.value)}
+                  classNamePrefix={"select"}
+                  value={
+                    price === "" ? "" : { value: price, label: `To ${price}$` }
+                  }
+                  // formatOptionLabel={`To ${{ value: price, label: price }}`}
+                />
+              </Label>
+              <Label>
+                <FormName>Сar mileage / km</FormName>
+                <MileageInputsWraper>
+                  <WrapperLeft>
+                    From
+                    <MileageInput
+                      type="text"
+                      onChange={(event) => setStartMiles(event.target.value)}
+                    />
+                  </WrapperLeft>
+                  <WrapperRight>
+                    To
+                    <MileageInput
+                      type="text"
+                      onChange={(event) => setEndMiles(event.target.value)}
+                    />
+                  </WrapperRight>
+                </MileageInputsWraper>
+              </Label>
+              <SearchBtn type="button" onClick={search}>
+                Search
+              </SearchBtn>
+              <SearchBtn type="button" onClick={clear}>
+                Clear
+              </SearchBtn>
+            </FormWraper>
+            {filteredCars.length > 0 ? (
+              <>
+                <List>
+                  {paginatedCars.map((car) => (
+                    <CarItem key={car.id} fav={fav} car={car} />
+                  ))}
+                </List>
+                {totalPages !== page && (
+                  <LoadMoreBtn onClick={getPage} type="button">
+                    Load more
+                  </LoadMoreBtn>
+                )}
+              </>
+            ) : (
+              <ErrorPage errorMessage="No cars available" />
+            )}
+          </Section>
         </>
       )}
     </>
