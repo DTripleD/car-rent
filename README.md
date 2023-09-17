@@ -25,4 +25,4 @@ CarRent is a site that offers:
 
 ## Live page
 
-Live page can be accessed via [https://github.com/DTripleD/car-rent/](https://github.com/DTripleD/car-rent/)
+Live page can be accessed via [https://dtripled.github.io/car-rent/](https://dtripled.github.io/car-rent/)

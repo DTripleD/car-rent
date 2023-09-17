@@ -20,7 +20,6 @@ const carsSlice = createSlice({
   extraReducers: {
     [fetchCars.pending]: handlePending,
     [fetchCars.fulfilled](state, action) {
-      console.log(state);
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;

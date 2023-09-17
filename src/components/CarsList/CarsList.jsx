@@ -36,8 +36,6 @@ const CarsList = ({ cars, fav }) => {
 
   const loading = useSelector(getLoading);
 
-  console.log(loading);
-
   useEffect(() => {
     setFilteredCars(cars);
   }, [cars]);
