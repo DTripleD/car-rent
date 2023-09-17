@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-// import { MdClose } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -7,7 +7,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(18, 20, 23, 0.5);
+  background-color: ${(props) => props.theme.colors.grey};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,17 +18,17 @@ export const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 24px;
-  padding: 15px;
-  max-width: 320px;
+  padding: 40px;
+  max-width: 100%;
   z-index: 100;
   overflow-y: auto;
-  max-height: 80vh;
-
+  max-height: 100%;
+  overflow-y: hidden;
   border-radius: 24px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     padding: 30px;
     max-width: 100%;
     max-height: 600px;
@@ -41,63 +41,32 @@ export const ModalContainer = styled.div`
     max-width: 100%;
     height: 600px;
     overflow-y: scroll;
-  }
-  @media (min-width: 1440px) {
-    top: 50%;
-    padding: 40px;
-    overflow-y: hidden;
-    max-width: 100%;
-    max-height: 100%;
-  }
+  } */
 `;
 
 export const BtnClose = styled.button`
   position: absolute;
-  color: black;
-  top: -12px;
-  right: 0px;
+  color: ${(props) => props.theme.colors.black};
+  top: -30px;
+  right: -20px;
   background-color: transparent;
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   border: none;
   cursor: pointer;
-  @media (min-width: 768px) {
-    top: -22px;
-    right: -12px;
-    width: 20px;
-    height: 20px;
-  }
-  @media (min-width: 1440px) {
-    top: -30px;
-    right: -20px;
-    width: 24px;
-    height: 24px;
-  }
 `;
 
-// export const CloseIcon = styled(MdClose)`
-//   display: block;
-//   color: #121417;
-//   width: 14px;
-//   height: 14px;
-//   @media (min-width: 768px) {
-//     top: -22px;
-//     right: -12px;
-//     width: 20px;
-//     height: 20px;
-//   }
-//   @media (min-width: 1440px) {
-//     top: -30px;
-//     right: -20px;
-//     width: 24px;
-//     height: 24px;
-//   }
-// `;
+export const CloseIcon = styled(MdClose)`
+  display: block;
+  color: #121417;
+  width: 24px;
+  height: 24px;
+`;
 
 export const ContentWrapper = styled.div`
   position: relative;
 
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   border-radius: 24px;
 
   @media (min-width: 768px) {
@@ -149,7 +118,7 @@ export const CarText = styled.li`
 `;
 
 export const ModelBlue = styled.div`
-  color: #3470ff;
+  color: ${(props) => props.theme.colors.primary};
   font-size: 16px;
 `;
 
@@ -158,22 +127,27 @@ export const SecondaryInfo = styled.div`
   width: 300px;
   flex-wrap: wrap;
   align-items: center;
-  color: rgba(18, 20, 23, 0.5);
+  color: ${(props) => props.theme.colors.grey};
 
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  gap: 3px;
+  gap: 6px;
   margin-bottom: 14px;
 `;
 
 export const SecondaryCarText = styled.div`
-  color: rgba(18, 20, 23, 0.5);
+  color: ${(props) => props.theme.colors.grey};
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  border-right: 1px solid rgba(18, 20, 23, 0.2);
-  padding-right: 3px;
+  border-right: 1px solid ${(props) => props.theme.colors.grey};
+  padding-right: 6px;
+
+  &:last-child {
+    padding-right: 0;
+    border: none;
+  }
 `;
 
 export const Descriprion = styled.p`
@@ -203,21 +177,26 @@ export const AccessoryList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  color: rgba(18, 20, 23, 0.5);
+  color: ${(props) => props.theme.colors.grey};
 
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  gap: 3px;
+  gap: 6px;
 `;
 
 export const AccessoryListItem = styled.li`
-  color: rgba(18, 20, 23, 0.5);
+  color: ${(props) => props.theme.colors.grey};
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  border-right: 1px solid rgba(18, 20, 23, 0.2);
-  padding-right: 3px;
+  border-right: 1px solid ${(props) => props.theme.colors.grey};
+  padding-right: 6px;
+
+  &:last-child {
+    padding-right: 0;
+    border: none;
+  }
 `;
 
 export const RentalBlock = styled.div`
@@ -257,7 +236,7 @@ export const RentalItem = styled.li`
   line-height: 1.5;
 
   & span {
-    color: #3470ff;
+    color: ${(props) => props.theme.colors.primary};
     font-family: Montserrat;
     font-size: 12px;
     font-weight: 600;
@@ -272,7 +251,7 @@ export const RentalBtn = styled.a`
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  background: #3470ff;
+  background: ${(props) => props.theme.colors.primary};
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -284,6 +263,6 @@ export const RentalBtn = styled.a`
   box-shadow: 0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.25);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    background: #0b44cd;
+    background: ${(props) => props.theme.colors.primaryHover};
   }
 `;

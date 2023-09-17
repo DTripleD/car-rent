@@ -16,6 +16,7 @@ export const FormWraper = styled.div`
   justify-content: center;
   gap: 18px;
   margin-bottom: 50px;
+  align-items: flex-end;
 `;
 
 export const SearchBtn = styled.button`
@@ -120,7 +121,7 @@ const StyledSelect = styled(Select)`
   }
 
   .select__placeholder {
-    color: rgba(18, 20, 23, 1);
+    color: ${(props) => props.theme.colors.grey};
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
@@ -130,16 +131,14 @@ const StyledSelect = styled(Select)`
 
   .select__option {
     background-color: transparent;
-    color: rgba(18, 20, 23, 0.2);
+    color: ${(props) => props.theme.colors.grey};
     cursor: pointer;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    &:hover {
-      color: rgba(18, 20, 23, 1);
-    }
-    :focus {
-      color: rgba(18, 20, 23, 1);
+    &:hover,
+    &:focus {
+      color: ${(props) => props.theme.colors.grey};
     }
   }
 
@@ -150,18 +149,18 @@ const StyledSelect = styled(Select)`
   .select__indicator {
     padding: 0;
     svg {
-      fill: rgba(18, 20, 23, 1);
+      fill: ${(props) => props.theme.colors.grey};
       transition: transform 300ms ease;
       :hover {
-        fill: rgba(18, 20, 23, 1);
+        fill: ${(props) => props.theme.colors.grey};
         transform: rotate(180deg);
       }
       :focus {
-        fill: rgba(18, 20, 23, 1);
+        fill: ${(props) => props.theme.colors.grey};
         transform: rotate(180deg);
       }
       :active {
-        fill: rgba(18, 20, 23, 1);
+        fill: ${(props) => props.theme.colors.grey};
         transform: rotate(180deg);
       }
     }
@@ -179,14 +178,14 @@ const StyledSelect = styled(Select)`
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
-    color: rgba(18, 20, 23, 1);
+    color: ${(props) => props.theme.colors.grey};
   }
 
   .select__menu-list::-webkit-scrollbar {
     width: 8px;
   }
   .select__menu-list::-webkit-scrollbar-thumb {
-    background: rgba(18, 20, 23, 0.05);
+    background: ${(props) => props.theme.colors.grey};
     border-radius: 14px;
   }
 `;
@@ -213,7 +212,7 @@ export const MileageInputLeft = styled.input`
   background-color: #f7f7fb;
   border: none;
   outline: none;
-  color: rgba(18, 20, 23, 1);
+  color: ${(props) => props.theme.colors.grey};
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
@@ -249,4 +248,24 @@ export const Label = styled.label`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+`;
+
+export const LoadMoreBtn = styled.button`
+  font-weight: 500px;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #3470ff;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration 300ms ease;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 `;

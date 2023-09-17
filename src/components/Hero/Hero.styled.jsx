@@ -19,16 +19,16 @@ export const HeroContentText = styled.div`
 `;
 
 export const LearnMore = styled(Link)`
-  background-color: black;
+  background-color: ${(props) => props.theme.colors.black};
   padding: 1.8rem 3rem;
   border-radius: 0.3rem;
-  border: 2px solid black;
+  border: 2px solid ${(props) => props.theme.colors.black};
   transition: all 0.3s;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
 
   &:hover {
     background-color: transparent;
-    color: black;
+    color: ${(props) => props.theme.colors.black};
   }
 `;
 

@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.header`
   gap: 12px;
   padding: 8px 0;
   margin-bottom: 16px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.colors.black};
 
   > nav {
     display: flex;
@@ -20,15 +20,15 @@ export const Logo = styled.p`
   margin: 0;
 `;
 
-export const Link = styled(NavLink)`
+export const StyledLink = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: ${(props) => props.theme.colors.black};
   font-weight: 500;
 
   &.active {
-    color: white;
-    background-color: orangered;
+    color: ${(props) => props.theme.colors.white};
+    background-color: ${(props) => props.theme.colors.primary};
   }
 `;

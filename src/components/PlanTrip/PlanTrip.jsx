@@ -1,6 +1,6 @@
-import SelectCar from "../../images/image1.png";
-import Contact from "../../images/image2.png";
-import Drive from "../../images/image3.png";
+import SelectCar from "../../images/img1.png";
+import Contact from "../../images/img2.png";
+import Drive from "../../images/img3.png";
 import {
   Image,
   PlanContainer,

@@ -1,12 +1,13 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import Home from "./pages/Home";
-import Catalog from "./pages/Catalog";
-import Favorite from "./pages/Favorite";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { fetchCars } from "./redux/operations";
+
+const Home = lazy(() => import("./pages/Home"));
+const Catalog = lazy(() => import("./pages/Catalog"));
+const Favorite = lazy(() => import("./pages/Favorite"));
 
 function App() {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { MainContainer } from "../MainContainer/MainContainer";
-import { HeaderWrapper, Logo, Link } from "./Header.styled";
+import { HeaderWrapper, Logo, StyledLink } from "./Header.styled";
 
 const Header = () => {
   return (
@@ -7,11 +7,11 @@ const Header = () => {
       <HeaderWrapper>
         <Logo>Logo</Logo>
         <nav>
-          <Link to="/" end>
+          <StyledLink to="/" end>
             Home
-          </Link>
-          <Link to="/catalog">Catalog</Link>
-          <Link to="/favorites">Favorite</Link>
+          </StyledLink>
+          <StyledLink to="/catalog">Catalog</StyledLink>
+          <StyledLink to="/favorites">Favorite</StyledLink>
         </nav>
       </HeaderWrapper>
     </MainContainer>

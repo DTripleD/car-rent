@@ -13,15 +13,16 @@ export const Item = styled.li`
 export const CarImgWrap = styled.div`
   position: relative;
   width: 100%;
+  width: 274px;
+  height: 268px;
 `;
 
 export const CarImg = styled.img`
   display: block;
-  width: 100%;
-  max-width: 100%;
-  width: 274px;
-  height: 268px;
+  height: 100%;
   border-radius: 14px;
+  object-fit: cover;
+  object-position: center center;
 `;
 
 export const InfoWrapper = styled.div`
@@ -79,23 +80,28 @@ export const SecondaryInfo = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  color: rgba(18, 20, 23, 0.5);
+  color: ${(props) => props.theme.colors.grey};
 
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  gap: 4px;
+  gap: 6px;
   max-height: 40px;
   overflow: hidden;
 `;
 
 export const SecondaryCarText = styled.div`
-  color: rgba(18, 20, 23, 0.5);
+  color: ${(props) => props.theme.colors.grey};
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
-  border-right: 1px solid rgba(18, 20, 23, 0.2);
-  padding-right: 4px;
+  border-right: 1px solid ${(props) => props.theme.colors.grey};
+  padding-right: 6px;
+
+  &:last-child {
+    padding-right: 0;
+    border: none;
+  }
 `;
 
 export const LearnMoreBtn = styled.button`
@@ -112,19 +118,12 @@ export const LearnMoreBtn = styled.button`
   border: none;
   cursor: pointer;
   outline: none;
-  margin-top: 18px;
+  margin-top: 28px;
   box-shadow: 0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.25);
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     background: #1946af;
-  }
-
-  @media (min-width: 768px) {
-    margin-top: 24px;
-  }
-  @media (min-width: 1440px) {
-    margin-top: 28px;
   }
 `;
 
@@ -147,7 +146,7 @@ export const HeartIcon = styled(HiOutlineHeart)`
 
 export const HeartIconBlue = styled(HiHeart)`
   display: block;
-  color: #3470ff;
+  color: ${(props) => props.theme.colors.primary};
   width: 18px;
   height: 18px;
 `;

@@ -5,7 +5,7 @@ import {
   ModalContainer,
   Backdrop,
   BtnClose,
-  //   CloseIcon,
+  CloseIcon,
   CarImg,
   InfoWrapper,
   MainInfo,
@@ -88,7 +88,7 @@ const Modal = ({
       <ModalContainer className="show">
         <ContentWrapper>
           <BtnClose type="button" aria-label="close button" onClick={onClose}>
-            {/* <CloseIcon /> */}
+            <CloseIcon />
           </BtnClose>
           <CarImg src={img} alt={make} />
           <InfoWrapper>

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Section = styled.section`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   padding: 100px 30px;
   background-position: -225px 255px;
   background-size: cover;
@@ -14,21 +14,21 @@ export const ChooseContainer = styled.div`
   align-items: center;
 `;
 
-export const Link = styled.a`
+export const StyledLink = styled.a`
   text-decoration: none;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   font-weight: 700;
   background-color: rgba(52, 112, 255, 1);
   padding: 1.5rem 2.5rem;
   border-radius: 0.3rem;
-  box-shadow: 0 10px 15px 0 rgb(255 83 48 / 35%);
+  box-shadow: 0 10px 15px 0 rgba(52, 112, 255, 1);
   transition: all 0.3s;
-  border: 2px solid rgba(52, 112, 255, 1);
   width: fit-content;
 
   &:hover {
-    box-shadow: 0 10px 15px 0 rgb(255 83 48 / 60%);
-    background-color: #fa4226;
+    box-shadow: 0 10px 15px 0 #1946af;
+    background-color: #1946af;
+    color: ${(props) => props.theme.colors.white};
   }
 `;
 

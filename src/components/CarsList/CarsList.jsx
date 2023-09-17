@@ -12,10 +12,12 @@ import {
   MileageInputLeft,
   MileageInputRight,
   Label,
+  LoadMoreBtn,
 } from "./CarsList.styled";
 
 import { optionCategories } from "../../shared/data";
 import { createArrayWithStep } from "../../shared/createArrayWithStep";
+import NoCars from "../NoCars/NoCars";
 
 const cardsPerPage = 8;
 
@@ -131,7 +133,9 @@ const CarsList = ({ cars, fav }) => {
 
   const paginatedCars = filteredCars.slice(0, page * cardsPerPage);
   const getPage = () => setPage(page + 1);
-  const totalPages = Math.ceil(cars.length / cardsPerPage);
+  const totalPages = Math.ceil(filteredCars.length / cardsPerPage);
+
+  console.log(paginatedCars);
 
   return (
     <div>
@@ -143,6 +147,7 @@ const CarsList = ({ cars, fav }) => {
             options={optionCategories}
             onChange={(event) => setModel(event.value)}
             classNamePrefix={"select"}
+            value={model === "" ? "" : { value: model, label: model }}
           />
         </Label>
         <Label>
@@ -152,6 +157,8 @@ const CarsList = ({ cars, fav }) => {
             options={priceOptions}
             onChange={(event) => setPrice(event.value)}
             classNamePrefix={"select"}
+            value={price === "" ? "" : { value: price, label: `To ${price}$` }}
+            // formatOptionLabel={`To ${{ value: price, label: price }}`}
           />
         </Label>
         <Label>
@@ -182,14 +189,14 @@ const CarsList = ({ cars, fav }) => {
         ))}
       </List>
 
-      {cars.length > 0 ? (
+      {filteredCars.length > 0 ? (
         totalPages !== page && (
-          <button onClick={getPage} type="button">
+          <LoadMoreBtn onClick={getPage} type="button">
             Load more
-          </button>
+          </LoadMoreBtn>
         )
       ) : (
-        <h2>No cars abble</h2>
+        <NoCars />
       )}
     </div>
   );
