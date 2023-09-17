@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { lazy, useEffect } from "react";
 import { fetchCars } from "./redux/operations";
 
-const Home = lazy(() => import("../src/pages/Home"));
+const HomePage = lazy(() => import("./pages/HomePage"));
 const Catalog = lazy(() => import("../src/pages/Catalog"));
 const Favorite = lazy(() => import("../src/pages/Favorite"));
 
@@ -20,10 +20,10 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
           <Route path="catalog" element={<Catalog />} />
           <Route path="favorites" element={<Favorite />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
     </>
