@@ -107,14 +107,13 @@ export const SecondaryCarText = styled.div`
 export const LearnMoreBtn = styled.button`
   width: 274px;
   padding: 12px 0;
-  color: #fff;
-  font-family: Manrope;
+  color: ${(props) => props.theme.colors.white};
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
   border-radius: 12px;
-  background-color: rgba(52, 112, 255, 1);
+  background-color: ${(props) => props.theme.colors.primary};
   border: none;
   cursor: pointer;
   outline: none;
@@ -123,7 +122,7 @@ export const LearnMoreBtn = styled.button`
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    background: #1946af;
+    background-color: ${(props) => props.theme.colors.primariHover};
   }
 `;
 

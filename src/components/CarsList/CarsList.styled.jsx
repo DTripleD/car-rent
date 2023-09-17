@@ -24,12 +24,12 @@ export const SearchBtn = styled.button`
   font-size: 14px;
   line-height: 20px;
   padding: 14px 44px;
-  background-color: rgba(52, 112, 255, 1);
+  background-color: ${(props) => props.theme.colors.primary};
   color: rgba(255, 255, 255, 1);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   &:hover {
-    background: #1946af;
+    background: ${(props) => props.theme.colors.primariHover};
   }
 
   &:focus {
@@ -46,7 +46,7 @@ export const FormName = styled.p`
 
 const StyledSelect = styled(Select)`
   .select__menu {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: ${(props) => props.theme.colors.white};
     border-radius: 14px;
     outline: 0;
     border: 0;
@@ -71,15 +71,12 @@ const StyledSelect = styled(Select)`
 
   .select__control {
     cursor: pointer;
-    /* background-color: transparent; */
-    /* color: white; */
+
     font-size: 14px;
     border: 0;
     border-radius: 0;
     background-color: rgba(247, 247, 251, 1);
     border-radius: 14px;
-    /* max-width: 335px; */
-    /* max-height: 54px; */
     padding: 14px 18px;
 
     :hover {
@@ -192,44 +189,18 @@ export const StyledSelectPrice = styled(StyledSelect)`
 
 export const MileageInputsWraper = styled.div`
   display: flex;
+  max-width: 320px;
 `;
 
-export const MileageInputLeft = styled.input`
-  display: flex;
-  width: 160px;
-  padding: 14px 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 14px 0 0 14px;
-  background-color: #f7f7fb;
+export const MileageInput = styled.input`
   border: none;
   outline: none;
-  color: ${(props) => props.theme.colors.grey};
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 20px;
-  border-right: 1px solid rgba(138, 138, 137, 0.2);
-
-  &::placeholder {
-    color: #121417;
-  }
-`;
-
-export const MileageInputRight = styled.input`
-  display: flex;
-  width: 160px;
-  padding: 14px 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 14px 14px 0;
-  background: #f7f7fb;
-  border: none;
-  outline: none;
+  width: 50px;
   color: #000;
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-
+  background-color: inherit;
   &::placeholder {
     color: #121417;
   }
@@ -247,17 +218,51 @@ export const LoadMoreBtn = styled.button`
   font-size: 16px;
   line-height: 24px;
 
-  color: #3470ff;
+  color: ${(props) => props.theme.colors.primary};
   background-color: transparent;
   border: none;
   text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: text-decoration 300ms ease;
+  transition: color 300ms ease;
   display: flex;
   margin-right: auto;
   margin-left: auto;
   &:hover,
   &:focus {
-    text-decoration: underline;
+    color: ${(props) => props.theme.colors.primariHover};
   }
+`;
+
+export const WrapperLeft = styled.div`
+  display: flex;
+  gap: 15px;
+  width: 160px;
+  padding: 14px 24px;
+  align-items: center;
+  border-radius: 14px 0 0 14px;
+  background-color: #f7f7fb;
+  border: none;
+  outline: none;
+  color: ${(props) => props.theme.colors.black};
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  border-right: 1px solid rgba(138, 138, 137, 0.2);
+  gap: 10px;
+`;
+
+export const WrapperRight = styled.div`
+  display: flex;
+  gap: 10px;
+  width: 160px;
+  padding: 14px 24px;
+  align-items: center;
+  border-radius: 0 14px 14px 0;
+  background: #f7f7fb;
+  border: none;
+  outline: none;
+
+  color: ${(props) => props.theme.colors.black};
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
 `;

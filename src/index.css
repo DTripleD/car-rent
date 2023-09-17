@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 h1 {

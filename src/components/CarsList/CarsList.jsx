@@ -9,10 +9,11 @@ import {
   StyledSelectBrand,
   StyledSelectPrice,
   MileageInputsWraper,
-  MileageInputLeft,
-  MileageInputRight,
   Label,
   LoadMoreBtn,
+  WrapperLeft,
+  WrapperRight,
+  MileageInput,
 } from "./CarsList.styled";
 
 import { optionCategories } from "../../shared/data";
@@ -178,16 +179,20 @@ const CarsList = ({ cars, fav }) => {
                 <Label>
                   <FormName>Сar mileage / km</FormName>
                   <MileageInputsWraper>
-                    <MileageInputLeft
-                      type="text"
-                      placeholder="From"
-                      onChange={(event) => setStartMiles(event.target.value)}
-                    />
-                    <MileageInputRight
-                      type="text"
-                      placeholder="To"
-                      onChange={(event) => setEndMiles(event.target.value)}
-                    />
+                    <WrapperLeft>
+                      From
+                      <MileageInput
+                        type="text"
+                        onChange={(event) => setStartMiles(event.target.value)}
+                      />
+                    </WrapperLeft>
+                    <WrapperRight>
+                      To
+                      <MileageInput
+                        type="text"
+                        onChange={(event) => setEndMiles(event.target.value)}
+                      />
+                    </WrapperRight>
                   </MileageInputsWraper>
                 </Label>
                 <SearchBtn type="button" onClick={search}>
