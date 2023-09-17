@@ -4,7 +4,7 @@ import CarsList from "../components/CarsList/CarsList";
 
 import { getCars } from "../redux/selectors";
 
-const Catalog = () => {
+const CatalogPage = () => {
   const cars = useSelector(getCars);
 
   return (
@@ -14,4 +14,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default CatalogPage;

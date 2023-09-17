@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchCars } from "./redux/operations";
 import HomePage from "./pages/HomePage";
-import Catalog from "./pages/Catalog";
-import Favorite from "./pages/Favorite";
+
+import FavoritePage from "./pages/FavoritePage";
+import CatalogPage from "./pages/CatalogPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +21,8 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="catalog" element={<Catalog />} />
-          <Route path="favorites" element={<Favorite />} />
+          <Route path="catalog" element={<CatalogPage />} />
+          <Route path="favorites" element={<FavoritePage />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

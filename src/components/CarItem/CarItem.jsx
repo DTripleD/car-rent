@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import Modal from "components/Modal/Modal";
 
@@ -132,3 +132,24 @@ const CarItem = ({ car }) => {
 };
 
 export default CarItem;
+
+CarItem.propTypes = {
+  car: PropTypes.shape({
+    make: PropTypes.string,
+    model: PropTypes.string,
+    mileage: PropTypes.number,
+    rentalConditions: PropTypes.string,
+    accessories: PropTypes.array,
+    engineSize: PropTypes.string,
+    id: PropTypes.number,
+    description: PropTypes.string,
+    rentalPrice: PropTypes.string,
+    fuelConsumption: PropTypes.string,
+    functionalities: PropTypes.array,
+    year: PropTypes.number,
+    img: PropTypes.string,
+    type: PropTypes.string,
+    rentalCompany: PropTypes.string,
+    address: PropTypes.string,
+  }),
+};
