@@ -1,4 +1,4 @@
-<h1 align="center">Drink Master</h1>
+<h1 align="center">CarRent</h1>
 <h2 align="center">
 
 <img src="src/images/banner.jpg">
